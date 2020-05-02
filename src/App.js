@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer } from "react";
+import "./App.css";
+import { ColorSelector } from "./ColorSelector";
+import { reducer, InitialState } from "./reducer";
+import { Guess } from "./Guess";
+import styled from "styled-components";
+import times from "lodash/times";
+import { Modal } from "./Modal";
+
+export const ApplicationState = React.createContext();
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+ const [state, dispatch] = useReducer(reducer, InitialState);
+ return (
+  <ApplicationState.Provider value={[state, dispatch]}>
+   <StyledApp>
+    <Modal />
+    <ColorSelector />
+    <div key={state.gameNumber}>
+     {times(10, (index) => (
+      <Guess key={index} index={index} />
+     ))}
     </div>
-  );
+   </StyledApp>
+  </ApplicationState.Provider>
+ );
 }
-
+const StyledApp = styled.div`
+ display: flex;
+ justify-content: center;
+ height: 100%;
+ background: #f4f4f4;
+`;
 export default App;
