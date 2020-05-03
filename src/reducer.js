@@ -1,11 +1,10 @@
 const colors = ["#FFB400", "#FF5A5F", "#8CE071", "#00D1C1", "#007A87", "#7B0051"];
+
 const generatePattern = () => {
  return [1, 2, 3, 4].map((_) => colors[randomNumber(0, colors.length - 1)]);
 };
 
-function randomNumber(min, max) {
- return Math.floor(Math.random() * (max - min) + min);
-}
+const randomNumber = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
 export const InitialState = {
  colors,

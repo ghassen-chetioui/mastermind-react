@@ -1,5 +1,4 @@
 import React, { useReducer } from "react";
-import "./App.css";
 import { ColorSelector } from "./ColorSelector";
 import { reducer, InitialState } from "./reducer";
 import { Guess } from "./Guess";
@@ -13,22 +12,27 @@ function App() {
  const [state, dispatch] = useReducer(reducer, InitialState);
  return (
   <ApplicationState.Provider value={[state, dispatch]}>
-   <StyledApp>
+   <Container>
     <Modal />
-    <ColorSelector />
-    <div key={state.gameNumber}>
-     {times(10, (index) => (
-      <Guess key={index} index={index} />
-     ))}
+    <h1>Mastermind</h1>
+    <div style={{ display: 'flex' }}>
+     <ColorSelector />
+     <div key={state.gameNumber}>
+      {times(10, (index) => (
+       <Guess key={index} index={index} />
+      ))}
+     </div>
     </div>
-   </StyledApp>
+   </Container>
   </ApplicationState.Provider>
  );
 }
-const StyledApp = styled.div`
+const Container = styled.div`
  display: flex;
- justify-content: center;
- height: 100%;
+ flex-direction: column;
+ align-items: center;
+ min-height: 100vh;
  background: #f4f4f4;
 `;
+
 export default App;

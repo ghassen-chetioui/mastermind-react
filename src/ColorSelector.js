@@ -6,14 +6,15 @@ import styled from "styled-components";
 export const ColorSelector = () => {
  const [state, dispatch] = useContext(ApplicationState);
  return (
-  <StyledColorSelector>
+  <Container>
    {state.colors.map((color, index) => (
     <Input key={index} color={color} selected={state.currentColor === color} onClick={() => dispatch({ type: "CHANGE_COLOR", color })} />
    ))}
-  </StyledColorSelector>
+  </Container>
  );
 };
-const StyledColorSelector = styled.div`
+
+const Container = styled.div`
  display: flex;
  flex-direction: column;
  margin-right: 10px;

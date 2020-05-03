@@ -5,7 +5,7 @@ import times from "lodash/times";
 
 export const Hint = ({ result }) => {
  return (
-  <StyledHint>
+  <Container>
    {result ? (
     <>
      {times(result.correct, (i) => (
@@ -25,11 +25,11 @@ export const Hint = ({ result }) => {
      ))}
     </>
    )}
-  </StyledHint>
+  </Container>
  );
 };
 
-const StyledHint = styled.div`
+const Container = styled.div`
  display: flex;
  flex-wrap: wrap;
  height: 20px;

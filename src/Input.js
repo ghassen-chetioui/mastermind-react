@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 export const Input = ({ color, selected, size, onClick }) => {
- return <StyledInput color={color} selected={selected} size={size} onClick={onClick} />;
+ return <Container color={color} selected={selected} size={size} onClick={onClick} />;
 };
 
-const StyledInput = styled.div`
+const Container = styled.div`
  background-color: ${(props) => props.color};
  border: ${(props) => props.selected ? "1px solid #525554" : "2px solid #EAEBE9"};
  cursor: pointer;

@@ -7,7 +7,7 @@ export const Modal = () => {
  return state.status !== "PLAYING" ? (
   <StyledModal id="modal">
    <ModalContent>
-    <div>{state.status === "WINING" ? "Congratulations you win :)" : "Bad luck you loose :("}</div>
+    <div>{state.status === "WINING" ? "Congratulations you win :)" : "Bad luck you lose :("}</div>
     <button onClick={() => dispatch({ type: "RESET" })}>Retry</button>
    </ModalContent>
   </StyledModal>

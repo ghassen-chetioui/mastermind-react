@@ -22,6 +22,7 @@ export const Guess = ({ index }) => {
 
  function checkGuess() {
   if (JSON.stringify(guess) === JSON.stringify(state.pattern)) {
+   setResult({ correct: 4, misplaced: 0 });
    dispatch({ type: "PATTERN_SOLVED" });
    return;
   }
@@ -51,7 +52,7 @@ export const Guess = ({ index }) => {
  }
 
  return (
-  <StyledRow current={index === state.currentGuess}>
+  <Container current={index === state.currentGuess}>
    <Inputs>
     {times(4, (i) => (
      <Input key={i} color={guess[i] || "lightgray"} onClick={() => state.currentGuess === index && updateGuess(i)} />
@@ -60,11 +61,11 @@ export const Guess = ({ index }) => {
    {isSubmittable() && <Submit className="fa fa-check" onClick={checkGuess}></Submit>}
 
    <Hint result={result} />
-  </StyledRow>
+  </Container>
  );
 };
 
-const StyledRow = styled.div`
+const Container = styled.div`
  display: flex;
  justify-content: space-between;
  align-items: center;
